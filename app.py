@@ -27,14 +27,14 @@ st.sidebar.markdown(f"""
 
 gif_key = st.secrets['GIF_TOKEN']
 
-gif_topic = st.text_input('Choose your gif topic!')
+gif_topic = st.text_input('First, choose your gif topic!')
 if gif_topic:
     response = requests.get(f'https://api.giphy.com/v1/gifs/random?api_key={gif_key}&tag={gif_topic}&rating=g')
     #
     if response.status_code == 200:
         data = response.json()
         gif_url = data['data']['images']['original']['url']
-        st.image(gif_url, caption=f"Hello little {gif_topic}!")
+        st.image(gif_url, caption=f"Hello little {gif_topic}! (it will not lower your taxi fare, but might make you smile)")
     else:
         st.error("Failed to fetch GIF. Please try again.")
 
