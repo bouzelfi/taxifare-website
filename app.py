@@ -25,9 +25,11 @@ st.sidebar.markdown(f"""
     # Le Wagon Taxi Consulting
     """)
 
+gif_key = st.secrets['GIF_TOKEN']
+
 gif_topic = st.text_input('Choose your gif topic!')
 if gif_topic:
-    response = requests.get(f'https://api.giphy.com/v1/gifs/random?api_key=no2uV66DaPzggf9fo4tZhZIWbDRXXtqf&tag={gif_topic}&rating=g')
+    response = requests.get(f'https://api.giphy.com/v1/gifs/random?api_key={gif_key}&tag={gif_topic}&rating=g')
     #
     if response.status_code == 200:
         data = response.json()
